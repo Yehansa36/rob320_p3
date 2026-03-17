@@ -11,7 +11,7 @@ void Mediator::shutdown() { shutdown_flag_ = true; }
 
 /**< TODO: Implement the spin_once method */
 void Mediator::spin_once() {
-    if(!server_ -> wait_for_accept(rix::util::Duration(0.1))) {
+    if(!server_ -> wait_for_accept(rix::util::Duration(0.0))) {
      return;
     }
      //accept connection from mediator
@@ -143,6 +143,8 @@ void Mediator::notify_subscribers(const std::vector<rix::msg::mediator::SubInfo>
     subN.publishers.push_back(publisher);
     // sent it to the subscribers endpoint using send_message_with_opcose_no_response
     rix::ipc::Endpoint ep(sub.endpoint.address, sub.endpoint.port);
+    auto client = client_factory_();
+    client->set_nonblocking(true);
     send_message_with_opcode_no_response(client_factory_(), subN, SUB_NOTIFY, ep); 
     }
 
@@ -158,6 +160,8 @@ void Mediator::notify_subscribers(const rix::msg::mediator::SubInfo &subscriber,
     subN.publishers = publishers;
     //send it to subscribers endpoint 
     rix::ipc::Endpoint ep (subscriber.endpoint.address, subscriber.endpoint.port);
+    auto client = client_factory_();
+    client->set_nonblocking(true);
     send_message_with_opcode_no_response(client_factory_(), subN, SUB_NOTIFY, ep);
 
 }
