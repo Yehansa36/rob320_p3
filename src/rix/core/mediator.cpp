@@ -20,17 +20,18 @@ void Mediator::spin_once() {
         return;
     }
     auto c = conn.lock();
+    if (!c) return;
 
     //read operation msg
     rix::msg::mediator::Operation message;
     std::vector<uint8_t> buffer(message.size());
-    c->read(buffer.data(), buffer.size());
+    if (c->read(buffer.data(), buffer.size()) <= 0) return;
     size_t offset = 0;
     message.deserialize(buffer.data(), buffer.size(), offset);
     
     //read msg bytes
     std::vector<uint8_t> buffer1(message.len);
-    c->read(buffer1.data(), buffer1.size());
+    if (c->read(buffer1.data(), buffer1.size()) <= 0) return;
 //NODE_REGISTER****
     if (message.opcode == NODE_REGISTER) {
         rix::msg::mediator::NodeInfo nodeInfo;
