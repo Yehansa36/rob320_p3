@@ -11,7 +11,7 @@ void Mediator::shutdown() { shutdown_flag_ = true; }
 
 /**< TODO: Implement the spin_once method */
 void Mediator::spin_once() {
-    if(!server_ -> wait_for_accept(rix::util::Duration(0.0))); {
+    if(!server_ -> wait_for_accept(rix::util::Duration(0.0))) {
      return;
     }
      //accept connection from mediator
@@ -44,7 +44,7 @@ void Mediator::spin_once() {
 
     }
 //SUB_REGISTER******
-    if (message.opcode == SUB_REGISTER) {
+    else if (message.opcode == SUB_REGISTER) {
         rix::msg::mediator::SubInfo subInfo;
         size_t offset2 = 0;
         if (!subInfo.deserialize(buffer1.data(), buffer1.size(), offset2)) {
