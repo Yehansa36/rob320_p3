@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/rix_test.dir/tests/rix_test.cpp.o -o rix_test  libproject3.a /usr/lib/aarch64-linux-gnu/libgtest_main.a /usr/lib/aarch64-linux-gnu/libgmock.a ../lib/linux-aarch64/libproject2.a ../lib/linux-aarch64/libproject1.a /usr/lib/aarch64-linux-gnu/libgtest.a 

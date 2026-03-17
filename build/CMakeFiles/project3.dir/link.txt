@@ -1,0 +1,2 @@
+/usr/bin/ar qc libproject3.a CMakeFiles/project3.dir/src/rix/core/node.cpp.o CMakeFiles/project3.dir/src/rix/core/publisher.cpp.o CMakeFiles/project3.dir/src/rix/core/subscriber.cpp.o CMakeFiles/project3.dir/src/rix/core/timer.cpp.o CMakeFiles/project3.dir/src/rix/core/mediator.cpp.o
+/usr/bin/ranlib libproject3.a

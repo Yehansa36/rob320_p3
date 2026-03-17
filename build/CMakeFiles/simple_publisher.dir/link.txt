@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/simple_publisher.dir/src/simple_publisher.cpp.o -o simple_publisher  libproject3.a ../lib/linux-aarch64/libproject2.a ../lib/linux-aarch64/libproject1.a 
