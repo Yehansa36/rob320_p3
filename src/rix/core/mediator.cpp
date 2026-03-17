@@ -11,7 +11,7 @@ void Mediator::shutdown() { shutdown_flag_ = true; }
 
 /**< TODO: Implement the spin_once method */
 void Mediator::spin_once() {
-    if(!server_ -> wait_for_accept(rix::util::Duration(0.0))) {
+    if(!server_ -> wait_for_accept(rix::util::Duration(0.1))) {
      return;
     }
      //accept connection from mediator
